@@ -74,6 +74,7 @@ public class BookOrderingSystem {
                   subChoice = 0;
 
                   while (subChoice != 4) {
+                     System.out.println("----Customer Operations----");
                      System.out.println(" > 1. Book Search");
                      System.out.println(" > 2. Place an Order");
                      System.out.println(" > 3. Check History Orders");
@@ -82,16 +83,22 @@ public class BookOrderingSystem {
 
                      // Read the user's choice
                      subChoice = scanner.nextInt();
+                     scanner.nextLine();
 
                      switch (subChoice) {
                         case 1:
-                           System.out.println("Book search selected.");
+                           // Ask the user to enter a keyword for searching
+                           System.out.print(">>> Please Enter ISBN, Book Title or Author Name for Searching: ");
+                           String keyword = scanner.nextLine();
+                           CustomerOperation.book_search(conn, keyword);
                            break;
                         case 2:
-                           System.out.println("Place an order selected.");
+                           CustomerOperation.place_an_order(conn);
                            break;
                         case 3:
-                           System.out.println("Check history orders selected.");
+                           System.out.print(">>> Please Enter Your UID: ");
+                           String uid = scanner.nextLine();
+                           CustomerOperation.check_history_orders(conn, uid);
                            break;
                         case 4:
                            // Back to main menu
