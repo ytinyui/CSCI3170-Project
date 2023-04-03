@@ -125,12 +125,17 @@ public class BookOrderingSystem {
                      switch (subChoice) {
                         case 1:
                            System.out.println("Order Update selected.");
+                           BookStoreOperation.OrderUpdate(conn);
                            break;
                         case 2:
                            System.out.println("Order Query selected.");
+                           BookStoreOperation.OrderQuery(conn);
                            break;
                         case 3:
                            System.out.println("N Most Popular Books selected.");
+                           System.out.print(">>>Please input number: ");
+                           int N = scanner.nextInt();
+                           BookStoreOperation.MostPopular(conn, N);
                            break;
                         case 4:
                            // Back to main menu
