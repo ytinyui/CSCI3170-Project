@@ -140,13 +140,13 @@ Writes(<ins>isbn, aid</ins>)
    </details>
 3. Check History Orders\
    The program allows users to check their history orders by entering their uid.
-   <details>
+    <details>
    <summary>Click to show SQL statement</summary>
    ```sql
    SELECT * FROM Orders O WHERE O.uid = uid;
    ```
 
-   </details>
+    </details>
 
 ### Bookstore Operation
 
