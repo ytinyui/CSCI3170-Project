@@ -101,9 +101,52 @@ Writes(<ins>isbn, aid</ins>)
 
 ### Customer Operation
 
-1. Book Search
-2. Place an Order
-3. Check History Orders
+1. Book Search\
+   The program allows users to search books by ISBN, book title or author name.
+   <details>
+   <summary>Click to show SQL statement</summary>
+
+   ```sql
+   SELECT DISTINCT B.isbn, B.title, B.price, B.inventory_quantity 
+   FROM Author A, Writes W, Book B 
+   WHERE W.aid = A.aid AND W.isbn = B.isbn AND A.aname = keyword
+   UNION
+   SELECT DISTINCT B.isbn, B.title, B.price, B.inventory_quantity 
+   FROM Author A, Writes W, Book B 
+   WHERE W.aid = A.aid AND W.isbn = B.isbn AND B.title = keyword
+   UNION
+   SELECT DISTINCT B.isbn, B.title, B.price, B.inventory_quantity 
+   FROM Author A, Writes W, Book B 
+   WHERE W.aid = A.aid AND W.isbn = B.isbn AND B.isbn = keyword;
+   SELECT DISTINCT A.aname FROM Author A, Writes W WHERE A.aid = W.aid AND W.isbn = isbn;
+   ```
+
+   </details>
+
+2. Place an Order\
+   User can add different books with different quantity to the order, submit the order or cancel the order.
+   <details>
+   <summary>Click to show SQL statement</summary>
+
+   ```sql
+   SELECT * FROM Customer C WHERE C.uid = uid;
+   SELECT * FROM Book B WHERE B.isbn = isbn;
+   SELECT B.inventory_quantity FROM Book B WHERE B.isbn = isbn;
+   SELECT DISTINCT O.oid FROM Orders O;
+   INSERT INTO Orders (oid, uid, isbn, order_date, order_quantity, shipping_status) 
+   VALUES (?, ?, ?, ?, ?, ?);
+   ```
+
+   </details>
+3. Check History Orders\
+   The program allows users to check their history orders by entering their uid.
+   <details>
+   <summary>Click to show SQL statement</summary>
+   ```sql
+   SELECT * FROM Orders O WHERE O.uid = uid;
+   ```
+
+   </details>
 
 ### Bookstore Operation
 
