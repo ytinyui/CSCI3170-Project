@@ -20,27 +20,31 @@ public class BookOrderingSystem {
 
          while (choice != 4) {
             // Print the main menu
+            int book_count = DatabaseOverview.count(conn, "Book");
+            int customer_count = DatabaseOverview.count(conn, "Customer");
+            int order_count = DatabaseOverview.count(conn, "Orders");
             System.out.println("===== Welcome to Book Ordering Management System =====");
             System.out.printf(" + System Date: %s%n", LocalDate.now().toString());
-            System.out.println(" + Database Records: Books (999), Customers (999), Orders (999)");
+            System.out.println(" + Database Records: Books (" + book_count +
+                  "), Customers (" + customer_count +
+                  "), Orders (" + order_count + ")");
             System.out.println("--------------------------");
             System.out.println(" > 1. Database Initialization");
             System.out.println(" > 2. Customer Operation");
             System.out.println(" > 3. Bookstore Operation");
             System.out.println(" > 4. Quit");
             System.out.print(">>> Please Enter Your Query: ");
-            // BookStoreOperation.ShippingStatusUpdater(conn);
+
+            BookStoreOperation.updateShippingStatus(conn);
 
             // Read the user's choice
             choice = scanner.nextInt();
-
-            BookStoreOperation.updateShippingStatus(conn);
 
             switch (choice) {
                case 1:
                   // sub-menu for database init
                   subChoice = 0;
-                  System.out.println("Database Initialization selected.");
+                  // System.out.println("Database Initialization selected.");
                   while (subChoice != 4) {
                      System.out.println(" > 1. Initialize Tables");
                      System.out.println(" > 2. Load Init Records");

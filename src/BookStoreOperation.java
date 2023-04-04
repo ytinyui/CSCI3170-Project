@@ -157,26 +157,25 @@ public class BookStoreOperation {
     }
 
     public static void updateShippingStatus(Connection conn) {
-
-        try {
-            Statement stmt = conn.createStatement();
-            Timer timer = new Timer();
-            timer.schedule(new Task(stmt), 29000, 30000);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        Timer timer = new Timer();
+        timer.schedule(new Task(conn), 2900, 3000);
     }
 
     static class Task extends TimerTask {
-        private Statement stmt;
+        private Connection conn;
 
-        public Task(Statement stmt) {
-            this.stmt = stmt;
+        public Task(Connection conn) {
+            this.conn = conn;
         }
 
         public void run() {
             try {
-                stmt.executeUpdate("UPDATE Orders SET shipping_status = 'shipped' WHERE shipping_status = 'ordered';");
+                if (DatabaseOverview.count(this.conn, "Orders") > 0) {
+                    Statement stmt = conn.createStatement();
+                    stmt.executeUpdate(
+                            "UPDATE Orders SET shipping_status = 'shipped' WHERE shipping_status = 'ordered';");
+                }
+
             } catch (SQLException e) {
                 e.printStackTrace();
             }
