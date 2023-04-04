@@ -1,5 +1,7 @@
 import java.sql.*;
 import java.util.Scanner;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class BookStoreOperation {
 
@@ -55,10 +57,10 @@ public class BookStoreOperation {
             System.out.println(">>>1. ordered  2. shipped  3. received");
             int choice = scanner.nextInt();
             if (currentStatus.equals("shipped") && choice == 1) {
-                System.out.println("Order has already been shipped.");
+                System.out.println("Failed! Order has already been shipped.");
                 return;
             } else if (currentStatus.equals("received") && (choice == 1 || choice == 2)) {
-                System.out.println("Order has already been received.");
+                System.out.println("Failed! Order has already been received.");
                 return;
             }
             String status = null;
@@ -68,8 +70,10 @@ public class BookStoreOperation {
                 status = "shipped";
             else if (choice == 3)
                 status = "received";
-            else
+            else {
+                System.out.println("Invalid Choice!");
                 return;
+            }
             String sql2 = "UPDATE Orders SET shipping_status = \"" + status + "\" WHERE oid = \"" + oid + "\";";
             PreparedStatement preparedStmt = conn.prepareStatement(sql2);
             preparedStmt.executeUpdate();
@@ -89,7 +93,7 @@ public class BookStoreOperation {
 
         try {
             Statement stmt = conn.createStatement();
-            System.out.println(">>> 1. ordered  2. shipped  3. received");
+            System.out.println(">>> Change to 1. ordered  2. shipped  3. received");
             int choice = scanner.nextInt();
             String status = null;
             if (choice == 1)
@@ -98,6 +102,10 @@ public class BookStoreOperation {
                 status = "shipped";
             else if (choice == 3)
                 status = "received";
+            else {
+                System.out.println("Invalid Choice!");
+                return;
+            }
             String sql = "SELECT * FROM Orders O WHERE shipping_status = \"" + status + "\";";
             ResultSet result = stmt.executeQuery(sql);
             ResultSetMetaData metaData = result.getMetaData();
@@ -145,6 +153,33 @@ public class BookStoreOperation {
             se.printStackTrace();
         } catch (Exception e) {
             e.printStackTrace();
+        }
+    }
+
+    public static void updateShippingStatus(Connection conn) {
+
+        try {
+            Statement stmt = conn.createStatement();
+            Timer timer = new Timer();
+            timer.schedule(new Task(stmt), 29000, 30000);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    static class Task extends TimerTask {
+        private Statement stmt;
+
+        public Task(Statement stmt) {
+            this.stmt = stmt;
+        }
+
+        public void run() {
+            try {
+                stmt.executeUpdate("UPDATE Orders SET shipping_status = 'shipped' WHERE shipping_status = 'ordered';");
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
     }
 }

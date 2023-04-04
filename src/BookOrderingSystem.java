@@ -29,9 +29,12 @@ public class BookOrderingSystem {
             System.out.println(" > 3. Bookstore Operation");
             System.out.println(" > 4. Quit");
             System.out.print(">>> Please Enter Your Query: ");
+            // BookStoreOperation.ShippingStatusUpdater(conn);
 
             // Read the user's choice
             choice = scanner.nextInt();
+
+            BookStoreOperation.updateShippingStatus(conn);
 
             switch (choice) {
                case 1:
