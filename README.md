@@ -151,9 +151,45 @@ Writes(<ins>isbn, aid</ins>)
 
 ### Bookstore Operation
 
-1. Order Update
-2. Order Query
-3. N Most Popular Books
+1. Order Update\
+   The program allows users to update the shipping status of an order.
+   <details>
+   <summary>Click to show SQL statement</summary>
+
+   ```sql
+   UPDATE Orders 
+   SET shipping_status = status 
+   WHERE O.oid = oid;
+   ```
+
+   </details>
+2. Order Query\
+   The program allows users to query all the order grouped by shipping status.
+   <details>
+   <summary>Click to show SQL statement</summary>
+
+   ```sql
+   SELECT * 
+   FROM Orders O 
+   WHERE shipping_status = status;
+   ```
+
+   </details>
+3. N Most Popular Books\
+   The program allows users to check the most popular book by entering the number that you want to show.
+   <details>
+   <summary>Click to show SQL statement</summary>
+
+   ```sql
+   SELECT B.isbn, B.title, B.price, COUNT(O.oid) AS num 
+   FROM Book B, Orders O 
+   WHERE B.isbn = O.isbn 
+   GROUP BY B.isbn 
+   ORDER BY num DESC 
+   LIMIT N;
+   ```
+
+   </details>
 
 ### Other Utilities
 

@@ -124,7 +124,7 @@ public class BookStoreOperation {
     public static void MostPopular(Connection conn, int N) {
         try {
             Statement stmt = conn.createStatement();
-            String sql = "SELECT B.isbn, B.title, B.price, COUNT(O.oid) AS num FROM Book B, Orders O WHERE B.isbn = O.isbn GROUP BY B.isbn ORDER BY num DESC LIMIT "
+            String sql = "SELECT B.isbn, B.title, B.price, B.inventory_quantity ,COUNT(O.oid) AS num FROM Book B, Orders O WHERE B.isbn = O.isbn GROUP BY B.isbn ORDER BY num DESC LIMIT "
                     + N + ";";
             ResultSet result = stmt.executeQuery(sql);
             ResultSetMetaData metaData = result.getMetaData();
