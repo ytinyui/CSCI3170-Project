@@ -104,6 +104,8 @@ Writes(<ins>isbn, aid</ins>)
 1. Book Search\
    The program allows users to search books by ISBN, book title or author name.
    <details>
+   ![Image text](https://raw.githubusercontent.com/ytinyui/CSCI3170-Project/master/img/customer_operations/2.1.1.JPG)
+   ![Image text](https://raw.githubusercontent.com/ytinyui/CSCI3170-Project/master/img/customer_operations/2.1.2.JPG)
    <summary>Click to show SQL statement</summary>
 
    ```sql
@@ -126,6 +128,9 @@ Writes(<ins>isbn, aid</ins>)
 2. Place an Order\
    User can add different books with different quantity to the order, submit the order or cancel the order.
    <details>
+   ![Image text](https://raw.githubusercontent.com/ytinyui/CSCI3170-Project/master/img/customer_operations/2.2.1.JPG)
+   ![Image text](https://raw.githubusercontent.com/ytinyui/CSCI3170-Project/master/img/customer_operations/2.2.2.JPG)
+   ![Image text](https://raw.githubusercontent.com/ytinyui/CSCI3170-Project/master/img/customer_operations/2.2.3.JPG)
    <summary>Click to show SQL statement</summary>
 
    ```sql
@@ -141,6 +146,8 @@ Writes(<ins>isbn, aid</ins>)
 3. Check History Orders\
    The program allows users to check their history orders by entering their uid.
    <details>
+   ![Image text](https://raw.githubusercontent.com/ytinyui/CSCI3170-Project/master/img/customer_operations/2.3.1.JPG)
+   ![Image text](https://raw.githubusercontent.com/ytinyui/CSCI3170-Project/master/img/customer_operations/2.3.2.JPG)
    <summary>Click to show SQL statement</summary>
 
    ```sql
