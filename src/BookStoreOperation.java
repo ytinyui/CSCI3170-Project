@@ -110,13 +110,17 @@ public class BookStoreOperation {
             ResultSet result = stmt.executeQuery(sql);
             ResultSetMetaData metaData = result.getMetaData();
             int columnCount = metaData.getColumnCount();
+            int[] columnWidths = new int[columnCount];
             for (int i = 1; i <= columnCount; i++) {
-                System.out.print(metaData.getColumnLabel(i) + "\t");
+                columnWidths[i - 1] = metaData.getColumnDisplaySize(i);
+            }
+            for (int i = 1; i <= columnCount; i++) {
+                System.out.printf("%-" + columnWidths[i - 1] + "s \t", metaData.getColumnLabel(i));
             }
             System.out.println();
             while (result.next()) {
                 for (int i = 1; i <= columnCount; i++) {
-                    System.out.print(result.getString(i) + "\t");
+                    System.out.printf("%-" + columnWidths[i - 1] + "s \t", result.getString(i));
                 }
                 System.out.println();
             }
@@ -137,13 +141,17 @@ public class BookStoreOperation {
             ResultSet result = stmt.executeQuery(sql);
             ResultSetMetaData metaData = result.getMetaData();
             int columnCount = metaData.getColumnCount();
+            int[] columnWidths = new int[columnCount];
             for (int i = 1; i <= columnCount; i++) {
-                System.out.print(metaData.getColumnLabel(i) + "\t");
+                columnWidths[i - 1] = metaData.getColumnDisplaySize(i);
+            }
+            for (int i = 1; i <= columnCount; i++) {
+                System.out.printf("%-" + columnWidths[i - 1] + "s ", metaData.getColumnLabel(i));
             }
             System.out.println();
             while (result.next()) {
                 for (int i = 1; i <= columnCount; i++) {
-                    System.out.print(result.getString(i) + "\t");
+                    System.out.printf("%-" + columnWidths[i - 1] + "s   ", result.getString(i));
                 }
                 System.out.println();
             }
