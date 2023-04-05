@@ -188,6 +188,8 @@ Writes(<ins>isbn, aid</ins>)
 1. Order Update\
    The program allows users to update the shipping status of an order.
    <details>
+   <img src="img/BookStoreOperation/3.1.1.png" width="50%">
+   <img src="img/BookStoreOperation/3.1.2.png" width="50%">
    <summary>Click to show SQL statement</summary>
 
    ```sql
@@ -201,6 +203,7 @@ Writes(<ins>isbn, aid</ins>)
 2. Order Query\
    The program allows users to query all the order grouped by shipping status.
    <details>
+   <img src="img/BookStoreOperation/3.2.png" width="50%">
    <summary>Click to show SQL statement</summary>
 
    ```sql
@@ -214,6 +217,7 @@ Writes(<ins>isbn, aid</ins>)
 3. N Most Popular Books\
    The program allows users to check the most popular book by entering the number that you want to show.
    <details>
+   <img src="img/BookStoreOperation/3.3.png" width="50%">
    <summary>Click to show SQL statement</summary>
 
    ```sql
