@@ -54,7 +54,7 @@ public class BookStoreOperation {
                 currentStatus = result.getString(6);
                 System.out.println();
             }
-            System.out.println(">>>1. ordered  2. shipped  3. received");
+            System.out.println(">>>Change to  1. ordered  2. shipped  3. received");
             int choice = scanner.nextInt();
             if (currentStatus.equals("shipped") && choice == 1) {
                 System.out.println("Failed! Order has already been shipped.");
@@ -158,7 +158,7 @@ public class BookStoreOperation {
 
     public static void updateShippingStatus(Connection conn) {
         Timer timer = new Timer();
-        timer.schedule(new Task(conn), 2900, 3000);
+        timer.schedule(new Task(conn), 29000, 30000);
     }
 
     static class Task extends TimerTask {
