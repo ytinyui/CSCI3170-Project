@@ -33,12 +33,20 @@ public class BookOrderingSystem {
             System.out.println(" > 2. Customer Operation");
             System.out.println(" > 3. Bookstore Operation");
             System.out.println(" > 4. Quit");
-            System.out.print(">>> Please Enter Your Query: ");
 
             BookStoreOperation.updateShippingStatus(conn);
 
             // Read the user's choice
-            choice = scanner.nextInt();
+            while (true) {
+               try {
+                  System.out.print(">>> Please Enter Your Query: ");
+                  choice = scanner.nextInt();
+                  break;
+               } catch (Exception e) {
+                  System.out.println("Invalid input, please try again.");
+                  scanner.nextLine();
+               }
+            }
 
             switch (choice) {
                case 1:
@@ -50,10 +58,18 @@ public class BookOrderingSystem {
                      System.out.println(" > 2. Load Init Records");
                      System.out.println(" > 3. Reset Database");
                      System.out.println(" > 4. Back to Main Menu");
-                     System.out.print(">>> Please Enter Your Query: ");
 
                      // Read the user's choice
-                     subChoice = scanner.nextInt();
+                     while (true) {
+                        try {
+                           System.out.print(">>> Please Enter Your Query: ");
+                           subChoice = scanner.nextInt();
+                           break;
+                        } catch (Exception e) {
+                           System.out.println("Invalid input, please try again.");
+                           scanner.nextLine();
+                        }
+                     }
 
                      switch (subChoice) {
                         case 1:
@@ -86,11 +102,18 @@ public class BookOrderingSystem {
                      System.out.println(" > 2. Place an Order");
                      System.out.println(" > 3. Check History Orders");
                      System.out.println(" > 4. Back to Main Menu");
-                     System.out.print(">>> Please Enter Your Query: ");
 
                      // Read the user's choice
-                     subChoice = scanner.nextInt();
-                     scanner.nextLine();
+                     while (true) {
+                        try {
+                           System.out.print(">>> Please Enter Your Query: ");
+                           subChoice = scanner.nextInt();
+                           break;
+                        } catch (Exception e) {
+                           System.out.println("Invalid input, please try again.");
+                           scanner.nextLine();
+                        }
+                     }
 
                      switch (subChoice) {
                         case 1:
@@ -124,10 +147,18 @@ public class BookOrderingSystem {
                      System.out.println(" > 2. Order Query");
                      System.out.println(" > 3. N Most Popular Books");
                      System.out.println(" > 4. Back to Main Menu");
-                     System.out.print(">>> Please Enter Your Query: ");
 
                      // Read the user's choice
-                     subChoice = scanner.nextInt();
+                     while (true) {
+                        try {
+                           System.out.print(">>> Please Enter Your Query: ");
+                           subChoice = scanner.nextInt();
+                           break;
+                        } catch (Exception e) {
+                           System.out.println("Invalid input, please try again.");
+                           scanner.nextLine();
+                        }
+                     }
 
                      switch (subChoice) {
                         case 1:
