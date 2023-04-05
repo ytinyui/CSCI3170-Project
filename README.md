@@ -130,7 +130,7 @@ Writes(<ins>isbn, aid</ins>)
 1. Book Search\
    The program allows users to search books by ISBN, book title or author name.  
    <img height="150" src="https://raw.githubusercontent.com/ytinyui/CSCI3170-Project/master/img/customer_operations/2.1.1.JPG"/>  
-   <img height="350" src="https://raw.githubusercontent.com/ytinyui/CSCI3170-Project/master/img/customer_operations/2.1.2.JPG"/>  
+   <img height="350" src="https://raw.githubusercontent.com/ytinyui/CSCI3170-Project/master/img/customer_operations/2.1.2.JPG"/>
    <details>
    <summary>Click to show SQL statement</summary>
 
@@ -155,7 +155,7 @@ Writes(<ins>isbn, aid</ins>)
    User can add different books with different quantity to the order, submit the order or cancel the order.  
    <img height="250" src="https://raw.githubusercontent.com/ytinyui/CSCI3170-Project/master/img/customer_operations/2.2.1.JPG"/>  
    <img height="250" src="https://raw.githubusercontent.com/ytinyui/CSCI3170-Project/master/img/customer_operations/2.2.2.JPG"/>  
-   <img height="350" src="https://raw.githubusercontent.com/ytinyui/CSCI3170-Project/master/img/customer_operations/2.2.3.JPG"/>  
+   <img height="350" src="https://raw.githubusercontent.com/ytinyui/CSCI3170-Project/master/img/customer_operations/2.2.3.JPG"/>
    <details>
    <summary>Click to show SQL statement</summary>
 
@@ -173,7 +173,7 @@ Writes(<ins>isbn, aid</ins>)
 3. Check History Orders\
    The program allows users to check their history orders by entering their uid.  
    <img height="150" src="https://raw.githubusercontent.com/ytinyui/CSCI3170-Project/master/img/customer_operations/2.3.1.JPG"/>  
-   <img height="350" src="https://raw.githubusercontent.com/ytinyui/CSCI3170-Project/master/img/customer_operations/2.3.2.JPG"/>  
+   <img height="350" src="https://raw.githubusercontent.com/ytinyui/CSCI3170-Project/master/img/customer_operations/2.3.2.JPG"/>
    <details>
    <summary>Click to show SQL statement</summary>
 
