@@ -8,6 +8,8 @@ GRANT ALL PRIVILEGES ON *.* TO 'user'@'localhost';
 CREATE DATABASE book_ordering_system;
 ```
 
+Open cmd on the directory of the project and run the program.
+
 ## Development
 
 Please implement Customer Operation, Bookstore Operation, Print Database Overview and Change shipping status.
@@ -81,8 +83,30 @@ Writes(<ins>isbn, aid</ins>)
 
     </details>
 
+   Before initialization:
+   <img src="img/db_init/1.1a.png" width="50%">
+   After initialization:
+   <img src="img/db_init/1.1b.png" width="50%">
+
 2. Load Init Records\
    The program loads the records in the tsv files to the corresponding tables.
+   <details><summary>Click to show SQL Statement</summary>
+
+   ```sql
+   INSERT INTO Customer (uid,name,address) VALUES (?, ?, ?);
+   INSERT INTO Book (isbn, title, price, inventory_quantity) VALUES (?, ?, ?, ?);
+   INSERT INTO Orders (oid, uid, isbn, order_date, order_quantity, shipping_status) VALUES (?, ?, ?, ?, ?, ?);
+   INSERT INTO Author (aid, aname) VALUES (?, ?);
+   INSERT INTO Writes (isbn, aid) VALUES (?, ?);
+   ```
+
+   </details>
+
+   <img src="img/db_init/1.2a.png" width="50%">
+   <img src="img/db_init/1.2b.png" width="50%">
+
+   The records are successfully inserted.
+   Note: the files are placed at ./tsv/, make sure the terminal is at the correct directory.
 
 3. Reset Database\
    The program resets the database by dropping all the tables then creating the tables again.
@@ -99,6 +123,8 @@ Writes(<ins>isbn, aid</ins>)
 
     </details>
 
+   <img src="img/db_init/1.3.png" width="50%">
+
 ### Customer Operation
 
 1. Book Search\
@@ -107,16 +133,16 @@ Writes(<ins>isbn, aid</ins>)
    <summary>Click to show SQL statement</summary>
 
    ```sql
-   SELECT DISTINCT B.isbn, B.title, B.price, B.inventory_quantity 
-   FROM Author A, Writes W, Book B 
+   SELECT DISTINCT B.isbn, B.title, B.price, B.inventory_quantity
+   FROM Author A, Writes W, Book B
    WHERE W.aid = A.aid AND W.isbn = B.isbn AND A.aname = keyword
    UNION
-   SELECT DISTINCT B.isbn, B.title, B.price, B.inventory_quantity 
-   FROM Author A, Writes W, Book B 
+   SELECT DISTINCT B.isbn, B.title, B.price, B.inventory_quantity
+   FROM Author A, Writes W, Book B
    WHERE W.aid = A.aid AND W.isbn = B.isbn AND B.title = keyword
    UNION
-   SELECT DISTINCT B.isbn, B.title, B.price, B.inventory_quantity 
-   FROM Author A, Writes W, Book B 
+   SELECT DISTINCT B.isbn, B.title, B.price, B.inventory_quantity
+   FROM Author A, Writes W, Book B
    WHERE W.aid = A.aid AND W.isbn = B.isbn AND B.isbn = keyword;
    SELECT DISTINCT A.aname FROM Author A, Writes W WHERE A.aid = W.aid AND W.isbn = isbn;
    ```
@@ -133,11 +159,12 @@ Writes(<ins>isbn, aid</ins>)
    SELECT * FROM Book B WHERE B.isbn = isbn;
    SELECT B.inventory_quantity FROM Book B WHERE B.isbn = isbn;
    SELECT DISTINCT O.oid FROM Orders O;
-   INSERT INTO Orders (oid, uid, isbn, order_date, order_quantity, shipping_status) 
+   INSERT INTO Orders (oid, uid, isbn, order_date, order_quantity, shipping_status)
    VALUES (?, ?, ?, ?, ?, ?);
    ```
 
    </details>
+
 3. Check History Orders\
    The program allows users to check their history orders by entering their uid.
    <details>
@@ -157,35 +184,37 @@ Writes(<ins>isbn, aid</ins>)
    <summary>Click to show SQL statement</summary>
 
    ```sql
-   UPDATE Orders 
-   SET shipping_status = status 
+   UPDATE Orders
+   SET shipping_status = status
    WHERE O.oid = oid;
    ```
 
    </details>
+
 2. Order Query\
    The program allows users to query all the order grouped by shipping status.
    <details>
    <summary>Click to show SQL statement</summary>
 
    ```sql
-   SELECT * 
-   FROM Orders O 
+   SELECT *
+   FROM Orders O
    WHERE shipping_status = status;
    ```
 
    </details>
+
 3. N Most Popular Books\
    The program allows users to check the most popular book by entering the number that you want to show.
    <details>
    <summary>Click to show SQL statement</summary>
 
    ```sql
-   SELECT B.isbn, B.title, B.price, COUNT(O.oid) AS num 
-   FROM Book B, Orders O 
-   WHERE B.isbn = O.isbn 
-   GROUP BY B.isbn 
-   ORDER BY num DESC 
+   SELECT B.isbn, B.title, B.price, COUNT(O.oid) AS num
+   FROM Book B, Orders O
+   WHERE B.isbn = O.isbn
+   GROUP BY B.isbn
+   ORDER BY num DESC
    LIMIT N;
    ```
 
@@ -197,6 +226,17 @@ Writes(<ins>isbn, aid</ins>)
    The system datetime is shown on the main menu.
 
 2. Print Database Overview
+   The system displays the number of records in the Book, Customer, Orders table respectively.
+
+   ```sql
+   SELECT COUNT(*) FROM table_name;
+   ```
+
+   <img src="img/db_init/1.1b.png" width="50%">
+
+   -1 is displayed if such table does not exist.
+   <img src="img/db_init/1.1a.png" width="50%">
+
 3. Control and Navigation\
    The user should input '4' to navigate to the previous page or quit the program.
 
