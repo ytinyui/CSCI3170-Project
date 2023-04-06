@@ -114,6 +114,7 @@ public class BookOrderingSystem {
                            scanner.nextLine();
                         }
                      }
+                     scanner.nextLine();
 
                      switch (subChoice) {
                         case 1:
