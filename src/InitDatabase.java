@@ -45,7 +45,7 @@ public class InitDatabase {
             for (String sql : create_tables) {
                 stmt.executeUpdate(sql);
             }
-            System.out.println("Tables created successfully.\n");
+            System.out.println("Tables created successfully.");
 
         } catch (SQLException se) {
             se.printStackTrace();
@@ -158,7 +158,7 @@ public class InitDatabase {
 
                 pstmt.executeUpdate();
             }
-            System.out.println("Records in Writes.tsv loaded successfully.\n");
+            System.out.println("Records in Writes.tsv loaded successfully.");
 
         } catch (SQLException se) {
             se.printStackTrace();

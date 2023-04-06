@@ -83,9 +83,9 @@ Writes(<ins>isbn, aid</ins>)
 
     </details>
 
-   Before initialization:
-   <img src="img/db_init/1.1a.png" width="50%">
-   After initialization:
+   Before initialization:\
+   <img src="img/db_init/1.1a.png" width="50%">\
+   After initialization:\
    <img src="img/db_init/1.1b.png" width="50%">
 
 2. Load Init Records\
