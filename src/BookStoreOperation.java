@@ -93,7 +93,7 @@ public class BookStoreOperation {
 
         try {
             Statement stmt = conn.createStatement();
-            System.out.println(">>> Change to 1. ordered  2. shipped  3. received");
+            System.out.println(">>> Search for: 1. ordered  2. shipped  3. received");
             int choice = scanner.nextInt();
             String status = null;
             if (choice == 1)
