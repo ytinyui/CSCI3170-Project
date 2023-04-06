@@ -253,13 +253,17 @@ public class CustomerOperation {
             ResultSet h_rs = h_stmt.executeQuery(h_str);
             ResultSetMetaData metaData = h_rs.getMetaData();
             int columnCount = metaData.getColumnCount();
+            int[] columnWidths = new int[columnCount];
             for (int i = 1; i <= columnCount; i++) {
-                System.out.print(metaData.getColumnLabel(i) + "\t");
+                columnWidths[i - 1] = metaData.getColumnDisplaySize(i);
+            }
+            for (int i = 1; i <= columnCount; i++) {
+                System.out.printf("%-" + columnWidths[i - 1] + "s \t", metaData.getColumnLabel(i));
             }
             System.out.println();
             while (h_rs.next()) {
                 for (int i = 1; i <= columnCount; i++) {
-                    System.out.print(h_rs.getString(i) + "\t");
+                    System.out.printf("%-" + columnWidths[i - 1] + "s \t", h_rs.getString(i));
                 }
                 System.out.println();
             }
