@@ -12,21 +12,6 @@ CREATE DATABASE book_ordering_system;
 
 Open cmd on the directory of the project and run the program.
 
-## Relational Schema
-
-Customer(<ins>uid, cname, address</ins>)\
-Book(<ins>isbn</ins>, title, price, inventory_quantity)\
-Orders(<ins>oid, uid, isbn</ins>, order_date, order_quantity, shipping_status)\
-Author(<ins>aid</ins>, aname)\
-Writes(<ins>isbn, aid</ins>)
-
-- We assume the same customer can place multiple orders at the same time,
-  where each order contains one isbn, and they all have the same oid.
-
-- The customer cannot place multiple orders of the same isbn at the sam time.
-
-- Every author has an id, therefore a book may have authors with the same name (with different aid's).
-
 ## Functions
 
 ### Database Initialization
